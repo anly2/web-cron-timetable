@@ -1,0 +1,56 @@
+<div ng-controller="listCtrl">
+    
+    
+    <div class="header">
+    
+        <div class="navbar-brand">{{_("Timetable to Cron")}}</div>
+    
+        <!--
+        <nav class="navbar navbar-light bg-faded">
+            <span class="navbar-brand">Timetable to Cron</span>
+    
+            <ul class="nav navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Saved configurations <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </nav>
+        -->
+    
+        <ol class="breadcrumb">
+            <li>{{_("List of saved schedules")}}</li>
+        </ol>
+    </div>
+    
+    <div class="container">
+
+        <div class="schedule-list">
+            
+            <table class="table"">
+                <tr ng-if="!schedules.length">
+                    <td colspan="2">
+                        <div class="alert">{{_("No saved schedules")}}</div>
+                        <a ng-href="#!/ ">{{_("Create a schedule")}}</a>
+                    </td>
+                </tr>
+                <tr ng-repeat="scheduleName in schedules" ng-class="{activated: $index==activeIndex}">
+                    <td>
+                        <big><a ng-href="#!/{{scheduleName}}">{{scheduleName}}</a></big>
+                    </td>
+                    <td>
+                        <div ng-if="$index==activeIndex">
+                            <span class="text-pale">{{_("Active")}}</span>
+                        </div>
+                        <div ng-if="$index!=activeIndex">
+                            <a style="cursor: pointer" ng-click="activateSchedule($index);">{{_("Activate")}}</a>
+                        </div>
+                    </td>
+                </tr>
+            </ul>
+    
+        </div>
+    
+    </div>
+
+
+</div>
